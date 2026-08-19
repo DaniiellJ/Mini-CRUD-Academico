@@ -1,0 +1,64 @@
+{% extends 'aluno/base.html' %}
+
+{% block title %}
+Detalhes do Aluno
+{% endblock %}
+
+{% block content %}
+
+<div class="titulo">
+
+    <h2>Detalhes do aluno</h2>
+
+</div>
+
+<div class="card">
+
+    <div class="info">
+        <strong>ID</strong>
+        {{ aluno.id }}
+    </div>
+
+    <div class="info">
+        <strong>Nome</strong>
+        {{ aluno.nome }}
+    </div>
+
+    <div class="info">
+        <strong>Curso</strong>
+        {{ aluno.curso }}
+    </div>
+
+    <div class="info">
+        <strong>Biografia</strong>
+
+        {% if aluno.bio %}
+            {{ aluno.bio }}
+        {% else %}
+            Nenhuma biografia cadastrada.
+        {% endif %}
+
+    </div>
+
+    <div class="acoes">
+
+        <a href="{% url 'lista_alunos' %}"
+           class="btn btn-secondary">
+            Voltar
+        </a>
+
+        <a href="{% url 'editar_aluno' aluno.id %}"
+           class="btn btn-warning">
+            Editar
+        </a>
+
+        <a href="{% url 'excluir_aluno' aluno.id %}"
+           class="btn btn-danger">
+            Excluir
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

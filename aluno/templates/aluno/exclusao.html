@@ -1,0 +1,41 @@
+{% extends 'aluno/base.html' %}
+
+{% block title %}
+Excluir Aluno
+{% endblock %}
+
+{% block content %}
+
+<div class="card confirmacao">
+
+    <h2>Excluir aluno</h2>
+
+    <p>
+        Tem certeza que deseja excluir o aluno
+        <strong>{{ aluno.nome }}</strong>?
+    </p>
+
+    <p>
+        Esta ação não poderá ser desfeita.
+    </p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <a href="{% url 'lista_alunos' %}"
+           class="btn btn-secondary">
+            Cancelar
+        </a>
+
+        <button
+            type="submit"
+            class="btn btn-danger">
+            Sim, excluir
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

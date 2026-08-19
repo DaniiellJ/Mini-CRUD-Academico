@@ -1,0 +1,96 @@
+{% extends 'aluno/base.html' %}
+
+{% block title %}
+Lista de Alunos
+{% endblock %}
+
+{% block content %}
+
+<div class="titulo">
+
+    <h2>Alunos cadastrados</h2>
+
+    <a href="{% url 'criar_aluno' %}"
+       class="btn btn-primary">
+        + Novo aluno
+    </a>
+
+</div>
+
+<div class="card">
+
+    {% if alunos %}
+
+    <table>
+
+        <thead>
+            <tr>
+                <th><a href="?sort={{ id_sort }}" style="color:inherit; text-decoration:none;">ID{% if current_sort == 'id_asc' %} ▲{% elif current_sort == 'id_desc' %} ▼{% endif %}</a></th>
+                <th><a href="?sort={{ nome_sort }}" style="color:inherit; text-decoration:none;">Nome{% if current_sort == 'nome_asc' %} ▲{% elif current_sort == 'nome_desc' %} ▼{% endif %}</a></th>
+                <th>Curso</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for aluno in alunos %}
+
+            <tr>
+
+                <td>
+                    {{ aluno.id }}
+                </td>
+
+                <td>
+                    {{ aluno.nome }}
+                </td>
+
+                <td>
+                    {{ aluno.curso }}
+                </td>
+
+                <td>
+
+                    <a href="{% url 'detalhe_aluno' aluno.id %}"
+                       class="btn btn-primary">
+                        Ver
+                    </a>
+
+                    <a href="{% url 'editar_aluno' aluno.id %}"
+                       class="btn btn-warning">
+                        Editar
+                    </a>
+
+                    <a href="{% url 'excluir_aluno' aluno.id %}"
+                       class="btn btn-danger">
+                        Excluir
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="vazio">
+
+        <h3>Nenhum aluno cadastrado.</h3>
+
+        <p>
+            Clique em "Novo aluno" para cadastrar o primeiro.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
