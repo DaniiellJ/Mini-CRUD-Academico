@@ -9,10 +9,10 @@ Setup local (Windows - PowerShell)
    .\venv\Scripts\Activate.ps1
 2. Instalar dependências:
    pip install -r requirements.txt
-3. Definir variáveis de ambiente (temporariamente na sessão):
-   $env:DJANGO_SECRET_KEY = 'troque-esta-chave'
+3. Definir variáveis de ambiente (opcional):
+   $env:DJANGO_SECRET_KEY = 'Key'
    $env:DJANGO_DEBUG = 'True'
-4. Rodar migrações e servidor:
+4. Rodar migrações e servidor:(principal)
    python manage.py migrate
    python manage.py runserver
 5. Acessar: http://127.0.0.1:8000/ (irá redirecionar para /aluno/)
