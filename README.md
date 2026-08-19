@@ -12,7 +12,6 @@ Setup local (Windows - PowerShell)
 3. Definir variáveis de ambiente (temporariamente na sessão):
    $env:DJANGO_SECRET_KEY = 'troque-esta-chave'
    $env:DJANGO_DEBUG = 'True'
-   # Para produção, use 'False' e defina DJANGO_SECRET_KEY com uma chave segura
 4. Rodar migrações e servidor:
    python manage.py migrate
    python manage.py runserver
